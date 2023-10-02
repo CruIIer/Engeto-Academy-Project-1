@@ -8,6 +8,10 @@ discord: alda_p
 
 user = input("username: ")
 password = input("password: ")
+reg_uzivatele = ["bob", "ann", "mike", "liz"]
+passwords = ["123", "pass123", "password123"]
+
+
 if user == "bob" and password == "123":
     print("Welcome to the app", user)
 elif user == "ann" and password == "pass123":
