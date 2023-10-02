@@ -6,22 +6,33 @@ email: apreclik@centrum.cz
 discord: alda_p
 """
 
+######## VYPSÁNÍ PROMĚNNÝCH ########
+
 user = input("username: ")
 password = input("password: ")
-reg_uzivatele = ["bob", "ann", "mike", "liz"]
+users = ["bob", "ann", "mike", "liz"]
 passwords = ["123", "pass123", "password123"]
+welcome = f"Welcome to the app {user}"
 
+######## KONTROLA VSTUPNÍCH ÚDAJŮ ########
 
-if user == "bob" and password == "123":
-    print("Welcome to the app", user)
-elif user == "ann" and password == "pass123":
-    print("Welcome to the app", user)
-elif user == "mike" and password == "password123":
-    print("Welcome to the app", user)
-elif user == "liz" and password == "pass123":
-    print("Welcome to the app", user)
+if user in users and password in passwords:
+    if user == "bob" and password == "123":
+        print(welcome)
+    elif user == "ann" and password == "pass123":
+        print(welcome)
+    elif user == "mike" and password == "password123":
+        print(welcome)
+    elif user == "liz" and password == "pass123":
+        print(welcome)
+    else:
+        print("unregistered user, terminating the program")
+        exit()
 else:
-    print("unregistered user, terminating the program")
+    print("unregistered user, terminating the program..")
+    exit()
+
+######## ZADÁNÍ ČÍSLA TEXTU K ANALÝZE ########
 
 print("We have 3 texts to be analyzed.")
 
