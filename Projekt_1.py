@@ -8,6 +8,7 @@ discord: alda_p
 
 ######## VYPSÁNÍ PROMĚNNÝCH ########
 
+separator = print(40*"-")
 user = input("username: ")
 password = input("password: ")
 users = ["bob", "ann", "mike", "liz"]
@@ -15,6 +16,8 @@ passwords = ["123", "pass123", "password123"]
 welcome = f"Welcome to the app {user}"
 
 ######## KONTROLA VSTUPNÍCH ÚDAJŮ ########
+
+separator
 
 if user in users and password in passwords:
     if user == "bob" and password == "123":
@@ -32,21 +35,22 @@ else:
     print("unregistered user, terminating the program..")
     exit()
 
-######## ZADÁNÍ ČÍSLA TEXTU K ANALÝZE ########
+######## VÝBĚR TEXTU K ANALÝZE ########
 
-print("We have 3 texts to be analyzed.")
-
-vyber = int(input("Enter a number btw. 1 and 3 to select:"))
+print("/nWe have 3 texts to be analyzed.")
+separator
+vyber_textu = int(input("Enter a number btw. 1 and 3 to select:"))
+separator
 if vyber < 1 or vyber > 3:
     print("Chosen number is not in the selection")
 elif vyber != type(int):
     print("You must select a number")
 
+######## STATISTIKY TEXTU ########
+separator
 
-# ---------------
 
-# 6. pro vybraný text spočítá následující statistiky 
-# 7. 
 
-# ---------------
 
+######## SLOUPCOVÝ GRAF ########
+separator
