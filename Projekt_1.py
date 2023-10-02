@@ -9,12 +9,13 @@ discord: alda_p
 from task_template import TEXTS
 ######## VYPSÁNÍ PROMĚNNÝCH ########
 
-separator = print(40*"-")
-user = input("username: ")
-password = input("password: ")
+separator = 40*"-"
 users = ["bob", "ann", "mike", "liz"]
 passwords = ["123", "pass123", "password123"]
-welcome = f"Welcome to the app {user}"
+user = input("username: ")
+password = input("password: ")
+welcome = f"Welcome to the app, {user}"
+print(separator)
 
 ######## KONTROLA VSTUPNÍCH ÚDAJŮ ########
  
@@ -28,12 +29,11 @@ if user in users and password in passwords:
     elif user == "liz" and password == "pass123":
         print(welcome)
     else:
-        print("unregistered user, terminating the program")
+        print("unregistered user, terminating the program...")
         exit()
 else:
     print("unregistered user, terminating the program..")
     exit()
-separator
 
 ######## VÝBĚR TEXTU K ANALÝZE ########
 
@@ -46,17 +46,24 @@ for cislo in range(num_texts + 1):
         num_texts_list.append(cislo)
 
 print(f"We have {num_texts} texts to be analyzed.")
-separator
-vyber_textu = int(input(f"Enter a number btw. {num_texts_list[0]} and {num_texts_list[-1]} to select:"))
-separator
-if vyber_textu < num_texts_list[0] or vyber_textu > num_texts_list[-1]:
-    print("Chosen text is not in selection")
-elif vyber != type(int):
-    print("You must select a number")
+print(separator)
+vyber_textu = input(f"""\
+Enter a number btw.\
+ {num_texts_list[0]} and {num_texts_list[-1]} to select: \
+""")
+
+print(separator)
+if vyber_textu.isnumeric():
+    vyber_textu = int(vyber_textu)
+    if (vyber_textu < num_texts_list[0] or
+        vyber_textu > num_texts_list[-1]):
+        print("wrong number, terminating the program...")
+else:
+    print("you didn't select a number, terminating the program...")
 
 ######## STATISTIKY TEXTU ########
-separator
+print(separator)
 
 
 ######## SLOUPCOVÝ GRAF ########
-separator
+print(separator)
