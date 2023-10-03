@@ -19,18 +19,16 @@ print(separator)
 
 ######## KONTROLA VSTUPNÍCH ÚDAJŮ ########
  
-if user in users and password in passwords:
-    if user == "bob" and password == "123":
-        print(welcome)
-    elif user == "ann" and password == "pass123":
-        print(welcome)
-    elif user == "mike" and password == "password123":
-        print(welcome)
-    elif user == "liz" and password == "pass123":
-        print(welcome)
-    else:
-        print("unregistered user, terminating the program...")
-        exit()
+if user not in users and password not in passwords:
+    print("unregistered user, terminating the program...")
+    exit()
+
+if (user == "bob" and password == "123" or
+user == "ann" and password == "pass123" or
+user == "mike" and password == "password123" or
+user == "liz" and password == "pass123"):
+    print(welcome)  
+  
 else:
     print("unregistered user, terminating the program..")
     exit()
