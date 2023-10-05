@@ -56,11 +56,23 @@ if vyber_textu.isnumeric():
     if (vyber_textu < num_texts_list[0] or
         vyber_textu > num_texts_list[-1]):
         print("wrong number, terminating the program...")
+        exit()
 else:
     print("you didn't select a number, terminating the program...")
+    exit()
 
 ######## STATISTIKY TEXTU ########
 print(separator)
+vybrany_text = TEXTS[vyber_textu - 1]
+######## POČET SLOV ########
+"""text = "Hello, world!"
+znaky_ke_odstraneni = ",! "
+novy_text = text
+for znak in znaky_ke_odstraneni:
+    novy_text = novy_text.replace(znak, "")
+print(novy_text)"""
+
+
 
 
 ######## SLOUPCOVÝ GRAF ########
