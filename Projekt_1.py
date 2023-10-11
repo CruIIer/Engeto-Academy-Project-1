@@ -62,18 +62,18 @@ else:
 
 ######## STATISTIKY TEXTU ########
 print(separator)
-vybrany_text_slova = TEXTS[vyber_textu - 1]
+vybrany_text = TEXTS[vyber_textu - 1]
 
 ######## POČET SLOV ########
-vybrany_text_slova = vybrany_text_slova.split()
+vybrany_text = vybrany_text.split()
 """MUSÍM PŘEPSAT PROMĚNNOU VYBRANY_TEXT_SLOVA VE FOR CYKLU
 DO KTERÉ SE BUDOU UKLÁDAT NOVĚ VYTVOŘENÁ OČIŠTĚNÁ SLOVA
 ALE TÍM PÁDEM MUSÍM PŘEPSAT VŠECHNY PROMĚNNÉ DOLE
 TAK SI DÁVEJ POZOR, CO PŘESNĚ DĚLÁŠ"""
-for slovo in vybrany_text_slova:
+vybrany_text_slova = []
+for slovo in vybrany_text:
     ciste_slovo = slovo.strip(".,:;-!?")
     vybrany_text_slova.append(ciste_slovo)
-print(vybrany_text_slova)
 
 pocet_slov = len(vybrany_text_slova)
 print(f"There are {pocet_slov} words in the selected text.")
