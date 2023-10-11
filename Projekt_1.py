@@ -66,6 +66,15 @@ vybrany_text_slova = TEXTS[vyber_textu - 1]
 
 ######## POČET SLOV ########
 vybrany_text_slova = vybrany_text_slova.split()
+"""MUSÍM PŘEPSAT PROMĚNNOU VYBRANY_TEXT_SLOVA VE FOR CYKLU
+DO KTERÉ SE BUDOU UKLÁDAT NOVĚ VYTVOŘENÁ OČIŠTĚNÁ SLOVA
+ALE TÍM PÁDEM MUSÍM PŘEPSAT VŠECHNY PROMĚNNÉ DOLE
+TAK SI DÁVEJ POZOR, CO PŘESNĚ DĚLÁŠ"""
+for slovo in vybrany_text_slova:
+    ciste_slovo = slovo.strip(".,:;-!?")
+    vybrany_text_slova.append(ciste_slovo)
+print(vybrany_text_slova)
+
 pocet_slov = len(vybrany_text_slova)
 print(f"There are {pocet_slov} words in the selected text.")
 
@@ -90,6 +99,7 @@ for slovo in vybrany_text_slova:
     if slovo.isalpha() and slovo.islower():
         slova_malymi.append(slovo)
 print(f"There are {len(slova_malymi)} lowercase words")
+
 
 ######## POČET ČÍSEL ########
 cisla = []
