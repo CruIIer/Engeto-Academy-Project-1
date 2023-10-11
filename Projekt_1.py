@@ -12,9 +12,8 @@ from task_template import TEXTS
 separator = 40*"-"
 users = ["bob", "ann", "mike", "liz"]
 passwords = ["123", "pass123", "password123"]
-user = input("username: ")
+user = input("username: ").lower()
 password = input("password: ")
-welcome = f"Welcome to the app, {user}"
 print(separator)
 
 ######## KONTROLA VSTUPNÍCH ÚDAJŮ ########
@@ -27,7 +26,7 @@ if (user == "bob" and password == "123" or
 user == "ann" and password == "pass123" or
 user == "mike" and password == "password123" or
 user == "liz" and password == "pass123"):
-    print(welcome)  
+    print(f"Welcome to the app, {user}")  
   
 else:
     print("unregistered user, terminating the program..")
@@ -63,17 +62,47 @@ else:
 
 ######## STATISTIKY TEXTU ########
 print(separator)
-vybrany_text = TEXTS[vyber_textu - 1]
+vybrany_text_slova = TEXTS[vyber_textu - 1]
+
 ######## POČET SLOV ########
-"""text = "Hello, world!"
-znaky_ke_odstraneni = ",! "
-novy_text = text
-for znak in znaky_ke_odstraneni:
-    novy_text = novy_text.replace(znak, "")
-print(novy_text)"""
+vybrany_text_slova = vybrany_text_slova.split()
+pocet_slov = len(vybrany_text_slova)
+print(f"There are {pocet_slov} words in the selected text.")
 
+######## POČET SLOV ZAČÍNAJÍCÍCH VELKÝM PÍSMENEM ########
+slova_zacinajici_velkym = []
+for slovo in vybrany_text_slova:
+    if slovo.istitle() and not slovo.isnumeric():
+        slova_zacinajici_velkym.append(slovo)
 
+print(f"There are {len(slova_zacinajici_velkym)} titlecase words.")
 
+######## POČET SLOV VELKÝMI PÍSMENY ########
+slova_malymi = []
+for slovo in vybrany_text_slova:
+    if slovo.isalpha() and slovo.isupper():
+        slova_malymi.append(slovo)
+print(f"There are {len(slova_malymi)} uppercase words")
+
+######## POČET SLOV MALÝMI PÍSMENY ########
+slova_malymi = []
+for slovo in vybrany_text_slova:
+    if slovo.isalpha() and slovo.islower():
+        slova_malymi.append(slovo)
+print(f"There are {len(slova_malymi)} lowercase words")
+
+######## POČET ČÍSEL ########
+cisla = []
+for cislo in vybrany_text_slova:
+    if cislo.isnumeric():
+        cisla.append(cislo)
+print(f"There are {len(cisla)} numeric strings.")
+
+######## SOUČET VŠECH ČÍSEL ########
+cisla_int = []
+for cislo in cisla:
+    cisla_int.append(int(cislo))
+print(f"The sum of all numbers is {sum(cisla_int)}")
 
 ######## SLOUPCOVÝ GRAF ########
 print(separator)
