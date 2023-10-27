@@ -34,26 +34,25 @@ else:
 
 ######## VÝBĚR TEXTU K ANALÝZE ########
 
-num_texts = (len(TEXTS))
-num_texts_list = []
-for cislo in range(num_texts + 1):
-    if cislo == 0:
+number_texts = (len(TEXTS))
+number_texts_list = []
+for number in range(number_texts + 1):
+    if number == 0:
         continue
     else:
-        num_texts_list.append(cislo)
+        number_texts_list.append(number)
 
-print(f"We have {num_texts} texts to be analyzed.")
+print(f"We have {number_texts} texts to be analyzed.")
 print(separator)
-vyber_textu = input(f"""\
+choose_text = input(f"""\
 Enter a number btw.\
- {num_texts_list[0]} and {num_texts_list[-1]} to select: \
+ {number_texts_list[0]} and {number_texts_list[-1]} to select: \
 """)
 
-print(separator)
-if vyber_textu.isnumeric():
-    vyber_textu = int(vyber_textu)
-    if (vyber_textu < num_texts_list[0] or
-        vyber_textu > num_texts_list[-1]):
+if choose_text.isnumeric():
+    choose_text = int(choose_text)
+    if (choose_text < number_texts_list[0] or
+        choose_text > number_texts_list[-1]):
         print("wrong number, terminating the program...")
         exit()
 else:
@@ -62,57 +61,76 @@ else:
 
 ######## STATISTIKY TEXTU ########
 print(separator)
-vybrany_text = TEXTS[vyber_textu - 1]
+chosen_text = TEXTS[choose_text - 1]
 
 ######## POČET SLOV ########
-vybrany_text = vybrany_text.split()
-"""MUSÍM PŘEPSAT PROMĚNNOU VYBRANY_TEXT_SLOVA VE FOR CYKLU
-DO KTERÉ SE BUDOU UKLÁDAT NOVĚ VYTVOŘENÁ OČIŠTĚNÁ SLOVA
-ALE TÍM PÁDEM MUSÍM PŘEPSAT VŠECHNY PROMĚNNÉ DOLE
-TAK SI DÁVEJ POZOR, CO PŘESNĚ DĚLÁŠ"""
-vybrany_text_slova = []
-for slovo in vybrany_text:
-    ciste_slovo = slovo.strip(".,:;-!?")
-    vybrany_text_slova.append(ciste_slovo)
+chosen_text = chosen_text.split()
+chosen_text_words = []
+for word in chosen_text:
+    clean_word = word.strip(".,:;-!?")
+    chosen_text_words.append(clean_word)
 
-pocet_slov = len(vybrany_text_slova)
-print(f"There are {pocet_slov} words in the selected text.")
+number_words = len(chosen_text_words)
+print(f"There are {number_words} words in the selected text.")
 
 ######## POČET SLOV ZAČÍNAJÍCÍCH VELKÝM PÍSMENEM ########
-slova_zacinajici_velkym = []
-for slovo in vybrany_text_slova:
-    if slovo.istitle() and not slovo.isnumeric():
-        slova_zacinajici_velkym.append(slovo)
+words_capital = []
+for word in chosen_text_words:
+    if word.istitle() and not word.isnumeric():
+        words_capital.append(word)
 
-print(f"There are {len(slova_zacinajici_velkym)} titlecase words.")
+print(f"There are {len(words_capital)} titlecase words.")
 
 ######## POČET SLOV VELKÝMI PÍSMENY ########
-slova_malymi = []
-for slovo in vybrany_text_slova:
-    if slovo.isalpha() and slovo.isupper():
-        slova_malymi.append(slovo)
-print(f"There are {len(slova_malymi)} uppercase words")
+words_upper = []
+for word in chosen_text_words:
+    if word.isalpha() and word.isupper():
+        words_upper.append(word)
+print(f"There are {len(words_upper)} uppercase words")
 
 ######## POČET SLOV MALÝMI PÍSMENY ########
-slova_malymi = []
-for slovo in vybrany_text_slova:
-    if slovo.isalpha() and slovo.islower():
-        slova_malymi.append(slovo)
-print(f"There are {len(slova_malymi)} lowercase words")
+words_lower = []
+for word in chosen_text_words:
+    if word.isalpha() and word.islower():
+        words_lower.append(word)
+print(f"There are {len(words_lower)} lowercase words")
 
 
 ######## POČET ČÍSEL ########
-cisla = []
-for cislo in vybrany_text_slova:
-    if cislo.isnumeric():
-        cisla.append(cislo)
-print(f"There are {len(cisla)} numeric strings.")
+words_numbers = []
+for number in chosen_text_words:
+    if number.isnumeric():
+        words_numbers.append(number)
+print(f"There are {len(words_numbers)} numbereric strings.")
 
 ######## SOUČET VŠECH ČÍSEL ########
-cisla_int = []
-for cislo in cisla:
-    cisla_int.append(int(cislo))
-print(f"The sum of all numbers is {sum(cisla_int)}")
+words_numbers_sum = []
+for number in words_numbers:
+    words_numbers_sum.append(int(number))
+print(f"The sum of all numbers is {sum(words_numbers_sum)}")
 
 ######## SLOUPCOVÝ GRAF ########
 print(separator)
+
+words_graph = chosen_text_words.copy()
+
+words_length = {}
+longest_length = 0
+for word in words_graph:
+    length = len(word)
+    if length not in words_length:
+        words_length[length] = 1
+    else:
+        words_length[length] += 1
+    
+    if length > longest_length:
+        longest_length = length
+
+print("LEN | OCCURENCES | NUMBER")
+for length in range(1, longest_length + 1):
+    words_same_len = words_length.get(length, 0)
+    line = "*" * words_same_len
+    print(f"{length} | {line} | {words_same_len}")
+    
+
+    
