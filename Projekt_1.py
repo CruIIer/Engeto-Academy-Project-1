@@ -126,11 +126,10 @@ for word in words_graph:
     if length > longest_length:
         longest_length = length
 
-print("LEN | OCCURENCES | NUMBER")
+
+print("LEN | OCCURENCES", "| NUMBER".rjust(17))
 for length in range(1, longest_length + 1):
     words_same_len = words_length.get(length, 0)
     line = "*" * words_same_len
-    print(f"{length} | {line} | {words_same_len}")
-    
-
+    print(f"{length:3} | {line:19} | {words_same_len}")
     
