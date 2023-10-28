@@ -7,8 +7,8 @@ discord: alda_p
 """
 
 from task_template import TEXTS
-######## VYPSÁNÍ PROMĚNNÝCH ########
 
+######## VYPSÁNÍ PROMĚNNÝCH ########
 separator = 40*"-"
 users = ["bob", "ann", "mike", "liz"]
 passwords = ["123", "pass123", "password123"]
@@ -17,7 +17,6 @@ password = input("password: ")
 print(separator)
 
 ######## KONTROLA VSTUPNÍCH ÚDAJŮ ########
- 
 if user not in users and password not in passwords:
     print("unregistered user, terminating the program...")
     exit()
@@ -33,14 +32,8 @@ else:
     exit()
 
 ######## VÝBĚR TEXTU K ANALÝZE ########
-
 number_texts = (len(TEXTS))
-number_texts_list = []
-for number in range(number_texts + 1):
-    if number == 0:
-        continue
-    else:
-        number_texts_list.append(number)
+number_texts_list = [number for number in range(1, number_texts + 1)]
 
 print(f"We have {number_texts} texts to be analyzed.")
 print(separator)
@@ -74,46 +67,32 @@ number_words = len(chosen_text_words)
 print(f"There are {number_words} words in the selected text.")
 
 ######## POČET SLOV ZAČÍNAJÍCÍCH VELKÝM PÍSMENEM ########
-words_capital = []
-for word in chosen_text_words:
-    if word.istitle() and not word.isnumeric():
-        words_capital.append(word)
-
+words_capital = [word for word in chosen_text_words
+    if word.istitle() and not word.isnumeric()]
 print(f"There are {len(words_capital)} titlecase words.")
 
 ######## POČET SLOV VELKÝMI PÍSMENY ########
-words_upper = []
-for word in chosen_text_words:
-    if word.isalpha() and word.isupper():
-        words_upper.append(word)
+words_upper = [word for word in chosen_text_words
+    if word.isalpha() and word.isupper()]
 print(f"There are {len(words_upper)} uppercase words")
 
 ######## POČET SLOV MALÝMI PÍSMENY ########
-words_lower = []
-for word in chosen_text_words:
-    if word.isalpha() and word.islower():
-        words_lower.append(word)
+words_lower = [word for word in chosen_text_words
+    if word.isalpha() and word.islower()]
 print(f"There are {len(words_lower)} lowercase words")
 
-
 ######## POČET ČÍSEL ########
-words_numbers = []
-for number in chosen_text_words:
-    if number.isnumeric():
-        words_numbers.append(number)
+words_numbers = [number for number in chosen_text_words
+    if number.isnumeric()]
 print(f"There are {len(words_numbers)} numbereric strings.")
 
 ######## SOUČET VŠECH ČÍSEL ########
-words_numbers_sum = []
-for number in words_numbers:
-    words_numbers_sum.append(int(number))
+words_numbers_sum = [int(number) for number in words_numbers]
 print(f"The sum of all numbers is {sum(words_numbers_sum)}")
 
 ######## SLOUPCOVÝ GRAF ########
 print(separator)
-
 words_graph = chosen_text_words.copy()
-
 words_length = {}
 longest_length = 0
 for word in words_graph:
@@ -125,7 +104,6 @@ for word in words_graph:
     
     if length > longest_length:
         longest_length = length
-
 
 print("LEN | OCCURENCES", "| NUMBER".rjust(17))
 for length in range(1, longest_length + 1):
