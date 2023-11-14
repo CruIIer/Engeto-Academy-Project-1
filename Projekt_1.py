@@ -6,6 +6,7 @@ email: apreclik@centrum.cz
 discord: alda_p
 """
 
+
 TEXTS = ['''
 Situated about 10 miles west of Kemmerer,
 Fossil Butte is a ruggedly impressive
