@@ -5,6 +5,3 @@ autor: Aleš Preclík
 email: apreclik@centrum.cz
 discord: alda_p
 """
-
-
-
