@@ -36,6 +36,7 @@ garpike and stingray are also present.''',
 ]
 
 ######## VYPSÁNÍ PROMĚNNÝCH ########
+
 separator = 40*"-"
 users = ["bob", "ann", "mike", "liz"]
 passwords = ["123", "pass123", "password123"]
